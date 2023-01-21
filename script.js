@@ -92,6 +92,23 @@ const clear = () =>{
     })
 }
 
+const toggleGrid = () =>{
+    toggleButton = document.querySelector('#toggle')
+
+    toggleButton.addEventListener('click', () =>{
+        for (i of cells){
+            if (i.style.border == '1px solid black')
+            {
+                i.style.border = '0px solid black'
+            }
+            else{
+                i.style.border = '1px solid black'
+            }
+        }
+    })
+}
+
 changeGridSize();
 getColor();
 clear();
+toggleGrid();
