@@ -82,5 +82,16 @@ const getColor = () =>{
     }
 }
 
+const clear = () =>{
+    clearButton = document.querySelector('#clear')
+
+    clearButton.addEventListener('click', () => {
+        for (i of cells){
+            i.style.background = 'white';
+        }
+    })
+}
+
 changeGridSize();
 getColor();
+clear();
