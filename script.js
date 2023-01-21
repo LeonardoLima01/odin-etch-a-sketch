@@ -1,0 +1,2 @@
+grid = document.querySelector('#grid')
+

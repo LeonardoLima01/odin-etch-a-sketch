@@ -1,0 +1,52 @@
+html{
+    height: 100%;
+    margin: 0;
+}
+body{
+    min-height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container{
+    width: 950px;
+    height: 700px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#interface{
+    width: 200px;
+    height: 700px;
+    background-color: rgb(214, 157, 1);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+#title{
+    font-size: 50px;
+    color: white;
+    border: 2x solid white;
+    margin: 35px 0px 20px 0px;
+}
+
+#grid{
+    width: 100px;
+    height: 700px;
+    background-color: gray;
+    flex: 2;
+}
+
+button{
+    padding: 17px;
+    width: 90px;
+    border-radius: 15px;
+}
