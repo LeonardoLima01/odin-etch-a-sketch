@@ -1,3 +1,6 @@
+let cells;
+
+// re-size page
 const createGrid = (grid_size) =>{
     const grid = document.querySelector('#grid');
     width = 600 / grid_size
@@ -21,30 +24,46 @@ const createGrid = (grid_size) =>{
         row.style.cssText = `height: ${height}px`;
         grid.appendChild(row);
     }
+
+    //detect mouse:over
+    cells = document.querySelectorAll('.cell');
+    for (i of cells){
+        i.addEventListener('mouseover', function(){
+            if (color != '#'){
+                return this.style.background = color;
+            }
+            //if rgb
+            else{
+                return this.style.background = '#' + Math.floor(Math.random()*16777215).toString(16)
+            }
+        })
+    }
 }
 
-const checkGridSize = () =>{
+createGrid(8);
+let color = 'white';
+
+// detect size buttons
+const changeGridSize = () =>{
     const btns = document.querySelectorAll('#btns2 button')
 
-for (i of btns){
-    i.addEventListener('click', function() {
+    for (i of btns){
+        i.addEventListener('click', function() {
 
-    document.querySelector('#grid').innerHTML = '';
-    if (this.textContent.length == 3){
-        return createGrid(this.textContent.slice(0,1));
+        document.querySelector('#grid').innerHTML = '';
+        if (this.textContent.length == 3){
+            return createGrid(this.textContent.slice(0,1));
+        }
+        else{
+            return createGrid(this.textContent.slice(0,2));
+        }          
+        });
     }
-    else{
-        return createGrid(this.textContent.slice(0,2));
-    }
-        
-    });
-    }
+    
 }
-
-let color = 'white';
+// detect color change buttons being pressed
 const getColor = () =>{
-
-const colorButtons = document.querySelectorAll('#btns button')
+    const colorButtons = document.querySelectorAll('#btns button')
     
     for (i of colorButtons){
         i.addEventListener('click', function(){
@@ -53,25 +72,15 @@ const colorButtons = document.querySelectorAll('#btns button')
             if (btn == 'Black'){
                 return color = 'black';
             }
-            else if (btn == 'Eraser'){
+            else if (btn == 'White'){
                 return color = 'white';
             }
             else{
-                return color = 'pink';
+                return color = '#';
             }
         })
     }
 }
 
-
-createGrid(8);
+changeGridSize();
 getColor();
-checkGridSize();
-
-const cells = document.querySelectorAll('.cell');
-
-for (i of cells){
-    i.addEventListener('mouseover', function(){
-        return this.style.background = color;
-    })
-}

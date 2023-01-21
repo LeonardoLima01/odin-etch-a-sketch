@@ -52,7 +52,7 @@ button{
     font-size: 50px;
     color: white;
     border-bottom: 2px solid white;
-    margin-top: 110px;
+    margin-top: 40px;
 }
 
 #sizes_title{
@@ -62,10 +62,22 @@ button{
     border-bottom: 2px solid white;
 }
 
+#options_title{
+    font-size: 50px;
+    color: white;
+    margin-top: 20px;
+    border-bottom: 2px solid white;
+}
+
 #btns,
 #btns2{
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+#toggle{
+    width: 150px;
+    margin-left: 10px;
 }
