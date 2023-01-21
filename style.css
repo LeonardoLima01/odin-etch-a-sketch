@@ -44,8 +44,16 @@ button{
     padding: 17px;
     width: 90px;
     border-radius: 15px;
+    border: none;
     cursor: pointer;
     font-size: 20px;
+    box-shadow: 0 9px #999;
+}
+
+button:active{
+    background-color: rgb(212, 212, 212);
+    transform: translateY(4px);
+    box-shadow: 0 5px #666;
 }
 
 #colors_title{
