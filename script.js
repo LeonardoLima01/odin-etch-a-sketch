@@ -23,6 +23,14 @@ const createGrid = (grid_size) =>{
         }
         row.style.cssText = `height: ${height}px`;
         grid.appendChild(row);
+
+        // fix 64x64 grid bug
+        if (grid_size == '64'){
+            grid.style.marginBottom = '7px'
+        }
+        else{
+            grid.style.marginBottom = '0px'
+        }
     }
 
     //detect mouse:over
