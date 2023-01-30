@@ -116,6 +116,15 @@ const toggleGrid = () =>{
     })
 }
 
+const colorPicker = () =>{
+    colorPickerButton = document.querySelector('#color_picker')
+
+    colorPickerButton.addEventListener('input', (i) =>{
+        color = i.target.value
+    })
+}
+
+colorPicker();
 changeGridSize();
 getColor();
 clear();

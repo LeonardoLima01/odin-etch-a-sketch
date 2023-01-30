@@ -83,9 +83,22 @@ button:active{
     gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 
 #toggle{
     width: 150px;
     margin-left: 10px;
+}
+
+#color_picker{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+#select{
+    font-size: 38px;
+    color: rgb(255, 255, 255);
 }
