@@ -3,8 +3,9 @@ let cells;
 // re-size page
 const createGrid = (grid_size) =>{
     const grid = document.querySelector('#grid');
-    width = 600 / grid_size
-    height = 700 / grid_size
+    grid.style.boxSizing = 'border-box'
+    width = 600 / grid_size;
+    height = 700 / grid_size;
     for(let i = 0; i < grid_size; i++) {
         let row = document.createElement("div");
 
@@ -25,11 +26,11 @@ const createGrid = (grid_size) =>{
         grid.appendChild(row);
 
         // fix 64x64 grid bug
-        if (grid_size == '64'){
-            grid.style.marginBottom = '7px'
+        if(grid_size > 57){
+            grid.style.marginTop = '-4px';
         }
         else{
-            grid.style.marginBottom = '0px'
+            grid.style.marginTop = '0px';
         }
     }
 
@@ -37,58 +38,20 @@ const createGrid = (grid_size) =>{
     cells = document.querySelectorAll('.cell');
     for (i of cells){
         i.addEventListener('mouseover', function(){
-            if (color != '#'){
-                return this.style.background = color;
-            }
-            //if rgb
-            else{
+            // if rgb
+            if (color == 'rgb'){
                 return this.style.background = '#' + Math.floor(Math.random()*16777215).toString(16)
             }
-        })
-    }
+            // if not rgb
+            else{
+                return this.style.background = color;
+            }
+    })
+}
 }
 
 createGrid(8);
 let color = 'white';
-
-// detect size buttons
-const changeGridSize = () =>{
-    const btns = document.querySelectorAll('#btns2 button')
-
-    for (i of btns){
-        i.addEventListener('click', function() {
-
-        document.querySelector('#grid').innerHTML = '';
-        if (this.textContent.length == 3){
-            return createGrid(this.textContent.slice(0,1));
-        }
-        else{
-            return createGrid(this.textContent.slice(0,2));
-        }          
-        });
-    }
-    
-}
-// detect color change buttons being pressed
-const getColor = () =>{
-    const colorButtons = document.querySelectorAll('#btns button')
-    
-    for (i of colorButtons){
-        i.addEventListener('click', function(){
-            btn = this.textContent
-    
-            if (btn == 'Black'){
-                return color = 'black';
-            }
-            else if (btn == 'White'){
-                return color = 'white';
-            }
-            else{
-                return color = '#';
-            }
-        })
-    }
-}
 
 const clear = () =>{
     clearButton = document.querySelector('#clear')
@@ -124,8 +87,30 @@ const colorPicker = () =>{
     })
 }
 
+const changeGridSize = () =>{
+    gridSizeSlider = document.querySelector('#grid_size_slider')
+    gridSizeOutput = document.querySelector('#grid_size_output')
+
+    gridSizeOutput.textContent = gridSizeSlider.value;
+
+    gridSizeSlider.addEventListener('input', (i) =>{
+        gridSizeOutput.textContent = i.target.value;
+
+        document.querySelector('#grid').innerHTML = '';
+        createGrid(i.target.value);   
+    })
+}
+
+const detectRgbButton = () =>{
+    rgbButton = document.querySelector('#rgb')
+
+    rgbButton.addEventListener('click', () =>{
+        color = 'rgb';
+    })
+}
+
+detectRgbButton();
 colorPicker();
 changeGridSize();
-getColor();
 clear();
 toggleGrid();
